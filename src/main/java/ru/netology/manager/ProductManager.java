@@ -7,6 +7,7 @@ import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
     private ProductRepository repository;
+
     public ProductManager(ProductRepository repository) {
         this.repository = repository;
     }
@@ -14,6 +15,7 @@ public class ProductManager {
     public void add(Product product) {
         repository.save(product);
     }
+
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         for (Product product : repository.findAll()) {
@@ -27,6 +29,7 @@ public class ProductManager {
         }
         return result;
     }
+
     public boolean matches(Product product, String search) {
         if (product instanceof Book) {
             Book book = (Book) product;

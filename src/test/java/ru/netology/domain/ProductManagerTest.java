@@ -13,20 +13,17 @@ import ru.netology.repository.ProductRepository;
 public class ProductManagerTest {
 
 
-
-
-
     @Test
     public void shouldSearchProductBook() {
         Book coreJava = new Book(1, "qqq", 1, "www");
-        Smartphone samsung=new Smartphone(2, "eee", 2, "rrrr");
+        Smartphone samsung = new Smartphone(2, "eee", 2, "rrrr");
         ProductRepository repository = new ProductRepository();
-        ProductManager manager=new ProductManager(repository);
+        ProductManager manager = new ProductManager(repository);
         manager.add(coreJava);
         manager.add(samsung);
         Product[] expected = new Product[]{coreJava};
-        Product[] actual = manager.searchBy("eee");
-        assertArrayEquals(expected,actual);
+        Product[] actual = manager.searchBy("qqq");
+        assertArrayEquals(expected, actual);
     }
 }
 
