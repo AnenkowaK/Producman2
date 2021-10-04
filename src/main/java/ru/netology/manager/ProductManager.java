@@ -3,6 +3,8 @@ package ru.netology.manager;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.domain.Book;
+import ru.netology.domain.TShirt;
+import ru.netology.repository.NotFoundException;
 import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
@@ -16,6 +18,7 @@ public class ProductManager {
         repository.save(product);
     }
 
+
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         for (Product product : repository.findAll()) {
@@ -28,6 +31,7 @@ public class ProductManager {
         }
         return result;
     }
+
 
     public boolean matches(Product product, String search) {
         if (product instanceof Book) {
@@ -46,6 +50,16 @@ public class ProductManager {
                 return true;
             }
             if (smartphone.getManufacturer().contains(search)) {
+                return true;
+            }
+            return false;
+        }
+        if (product instanceof TShirt) {
+            TShirt tShirt = (TShirt) product;
+            if (tShirt.getName().contains(search)) {
+                return true;
+            }
+            if (tShirt.getColor().contains(search)) {
                 return true;
             }
             return false;
